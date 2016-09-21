@@ -41,6 +41,58 @@ def getDe(letter,charmeleon,charizard)
 		end
 	end
 end
+charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+dont_exit_true = true
+while dont_exit_true == true
+	puts "Choose one of the following numbers:"
+	puts "1)Encrypt"
+	puts "2)Decrypt"
+	puts "3)Exit"
+	print"Choice:"
+	case gets.chomp.to_i
+		when 1
+			print "Enter string you want encrypted:"
+			text = gets
+			text = text.chomp
+			text = text.downcase
+			charmander =Array.new(text.length)
+			for counter in 0...text.length
+				num = Random.rand(25)
+		charmander[counter] = charizard[num] 
+			end
+			print "Your key is:"
+			for counter in 0...charmander.length
+				print charmander[counter]
+			end
+			print "\nYour encrypted message is:"
+			for counter in 0...charmander.length
+
+				print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
+			end
+			puts ""
+		when 2
+			
+			print "What is your key:"
+			key= gets
+			key = key.chomp
+			key = key.chars
+			print "What is your encrypted message:"
+			En = gets
+			print "Your decrypted message is:"
+			for counter in 0...charmander.length
+
+				print getDe(En.chars[counter],getEnArr(getLim(getPOA(charizard,key[counter])),getPOA(charizard,key[counter])),charizard)
+			end
+			puts ""
+		when 3
+		dont_exit_true = false
+		else
+		puts "That number isn't one of your choices. Please try again."
+	end
+
+end
+
+=begin
 print "Enter string you want encrypted:"
 text = gets
 #text = "s\n"
