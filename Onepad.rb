@@ -35,23 +35,24 @@ end
 def getDe(letter,charmeleon,charizard)
 	for count in 0..25
 		if letter == charmeleon[count]
+			#puts letter.to_s+"="+charmeleon[count].to_s+"at"+count.to_s+"returns"+charizard[count].to_s
 			return charizard[count]
 			break
 		end
 	end
 end
 print "Enter string you want encrypted:"
-#text = gets
-text = "s\n"
+text = gets
+#text = "s\n"
 text = text.chomp
-text.downcase
+text = text.downcase
 charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 charmander =Array.new(text.length)
 for counter in 0...text.length
 		num = Random.rand(25)
 		charmander[counter] = charizard[num] 
 end
-charmander = ['b']
+#charmander = ['b']
 print "Your key is:"
 for counter in 0...charmander.length
 	print charmander[counter]
@@ -78,8 +79,8 @@ print "\nYour encrypted message is:"
 En = Array.new(text.length)
 for counter in 0...charmander.length
 
-	print getEn(charmander[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
-	En[counter] = getEn(charmander[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
+	print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
+	En[counter] = getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
 end
 print "\nWhat is your key:"
 for counter in 0...charmander.length
@@ -89,7 +90,7 @@ end
 print "\nWhat is your encrypted message:"
 for counter in 0...charmander.length
 
-	print getEn(charmander[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
+	print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
 end
 print "\nYour decrypted message is:"
 for counter in 0...charmander.length
@@ -97,8 +98,10 @@ for counter in 0...charmander.length
 	print getDe(En[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
 end
 puts
+=begin
 getLim_counter = 0
 charizard.each do charizard
 puts charizard[getLim_counter].to_s+" "+getLim(getPOA(charizard,charizard[getLim_counter])).to_s
 getLim_counter = getLim_counter+1
 end
+=end
