@@ -10,9 +10,7 @@ def getLim(letter)
 	return (letter - 26).abs
 end
 def getEnArr(lim,intletter)
-	 charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-	#chamander = ['c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a','b']
-	#              3   4   5   6   7   8   9  10  11  12  13  14  15  16
+	charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 	charmander = Array.new(26)
 	for count in 0..(lim).abs
 		charmander[count] = charizard[intletter+count]
@@ -58,7 +56,7 @@ while dont_exit_true == true
 			charmander =Array.new(text.length)
 			for counter in 0...text.length
 				num = Random.rand(25)
-		charmander[counter] = charizard[num] 
+				charmander[counter] = charizard[num] 
 			end
 			print "Your key is:"
 			for counter in 0...charmander.length
@@ -73,15 +71,14 @@ while dont_exit_true == true
 		when 2
 			
 			print "What is your key:"
-			key= gets
-			key = key.chomp
+			key= gets.chomp
 			key = key.chars
-			print "What is your encrypted message:"
-			En = gets
+			print "What is your encrypted message:"	
+			$En = gets
 			print "Your decrypted message is:"
-			for counter in 0...charmander.length
+			for counter in 0...key.length
 
-				print getDe(En.chars[counter],getEnArr(getLim(getPOA(charizard,key[counter])),getPOA(charizard,key[counter])),charizard)
+				print getDe($En.chars[counter],getEnArr(getLim(getPOA(charizard,key[counter])),getPOA(charizard,key[counter])),charizard)
 			end
 			puts ""
 		when 3
@@ -89,71 +86,5 @@ while dont_exit_true == true
 		else
 		puts "That number isn't one of your choices. Please try again."
 	end
-
 end
-
-=begin
-print "Enter string you want encrypted:"
-text = gets
-#text = "s\n"
-text = text.chomp
-text = text.downcase
-charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-charmander =Array.new(text.length)
-for counter in 0...text.length
-		num = Random.rand(25)
-		charmander[counter] = charizard[num] 
-end
-#charmander = ['b']
-print "Your key is:"
-for counter in 0...charmander.length
-	print charmander[counter]
-end
-#=begin
-puts "\nPlace of alphebet for keys"
-for counter in 0...charmander.length
-
-	print getPOA(charizard,charmander[counter]).to_s+" "
-end
-puts "\n Limits to key if you know what I mean:"
-for counter in 0...charmander.length
-
-	print getLim(getPOA(charizard,charmander[counter])).to_s+" "
-end
-puts "\n Encryption array if you know what I mean:"
-for counter in 0...charmander.length
-
-	print getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])).to_s+"\n"
-	print charizard.to_s+"\n"
-end
-#=end
-print "\nYour encrypted message is:"
-En = Array.new(text.length)
-for counter in 0...charmander.length
-
-	print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
-	En[counter] = getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
-end
-print "\nWhat is your key:"
-for counter in 0...charmander.length
-
-	print charmander[counter]
-end
-print "\nWhat is your encrypted message:"
-for counter in 0...charmander.length
-
-	print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
-end
-print "\nYour decrypted message is:"
-for counter in 0...charmander.length
-
-	print getDe(En[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
-end
-puts
-=begin
-getLim_counter = 0
-charizard.each do charizard
-puts charizard[getLim_counter].to_s+" "+getLim(getPOA(charizard,charizard[getLim_counter])).to_s
-getLim_counter = getLim_counter+1
-end
-=end
+print "Bye!"
