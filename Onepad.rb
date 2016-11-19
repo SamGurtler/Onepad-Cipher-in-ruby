@@ -7,23 +7,23 @@ def getPOA(charizard,letter)
 	end 
 end
 def getLim(letter)
-	return (letter - 26).abs
+	return (letter - 68).abs
 end
 def getEnArr(lim,intletter)
-	charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-	charmander = Array.new(26)
+	charizard = ['0','1','2','3','4','5','6','7','8','9',' ','.','(',')',',','!','?','a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z']
+	charmander = Array.new(68)
 	for count in 0..(lim).abs
 		charmander[count] = charizard[intletter+count]
 	end
 	counter = 0
-	for count in lim..25
+	for count in lim..67
 		charmander[count] = charizard[counter]
 		counter = counter+1
 	end
 	return charmander
 end
 def getEn(letter,charmeleon,charizard)
-	for count in 0..25
+	for count in 0..67
 		if letter == charizard[count]
 			return charmeleon[count]
 			break
@@ -31,7 +31,7 @@ def getEn(letter,charmeleon,charizard)
 	end
 end
 def getDe(letter,charmeleon,charizard)
-	for count in 0..25
+	for count in 0..67
 		if letter == charmeleon[count]
 			#puts letter.to_s+"="+charmeleon[count].to_s+"at"+count.to_s+"returns"+charizard[count].to_s
 			return charizard[count]
@@ -39,7 +39,7 @@ def getDe(letter,charmeleon,charizard)
 		end
 	end
 end
-charizard = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+charizard =['0','1','2','3','4','5','6','7','8','9',' ','.','(',')',',','!','?','a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z']
 dont_exit_true = true
 while dont_exit_true == true
 	puts "Choose one of the following numbers:"
@@ -52,10 +52,10 @@ while dont_exit_true == true
 			print "Enter string you want encrypted:"
 			text = gets
 			text = text.chomp
-			text = text.downcase
 			charmander =Array.new(text.length)
 			for counter in 0...text.length
-				num = Random.rand(25)
+				num = Random.rand(67)
+				
 				charmander[counter] = charizard[num] 
 			end
 			print "Your key is:"
