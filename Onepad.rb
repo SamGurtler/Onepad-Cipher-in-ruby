@@ -1,3 +1,4 @@
+$size = 69
 def getPOA(charizard,letter)
 	for count in 0...charizard.length()
 		if charizard[count] == letter 
@@ -7,23 +8,23 @@ def getPOA(charizard,letter)
 	end 
 end
 def getLim(letter)
-	return (letter - 68).abs
+	return (letter - $size).abs
 end
 def getEnArr(lim,intletter)
-	charizard = ['0','1','2','3','4','5','6','7','8','9',' ','.','(',')',',','!','?','a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z']
-	charmander = Array.new(68)
+	charizard = ['0','1','2','3','4','5','6','7','8','9',' ','.','(',')','"',',','!','?','a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z']
+	charmander = Array.new($size)
 	for count in 0..(lim).abs
 		charmander[count] = charizard[intletter+count]
 	end
 	counter = 0
-	for count in lim..67
+	for count in lim..$size-1
 		charmander[count] = charizard[counter]
 		counter = counter+1
 	end
 	return charmander
 end
 def getEn(letter,charmeleon,charizard)
-	for count in 0..67
+	for count in 0..$size-1
 		if letter == charizard[count]
 			return charmeleon[count]
 			break
@@ -31,7 +32,7 @@ def getEn(letter,charmeleon,charizard)
 	end
 end
 def getDe(letter,charmeleon,charizard)
-	for count in 0..67
+	for count in 0..$size-1
 		if letter == charmeleon[count]
 			#puts letter.to_s+"="+charmeleon[count].to_s+"at"+count.to_s+"returns"+charizard[count].to_s
 			return charizard[count]
@@ -39,7 +40,7 @@ def getDe(letter,charmeleon,charizard)
 		end
 	end
 end
-charizard =['0','1','2','3','4','5','6','7','8','9',' ','.','(',')',',','!','?','a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z']
+charizard =['0','1','2','3','4','5','6','7','8','9',' ','.','(',')','"',',','!','?','a','A','b','B','c','C','d','D','e','E','f','F','g','G','h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P','q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z']
 dont_exit_true = true
 while dont_exit_true == true
 	puts "Choose one of the following numbers:"
@@ -54,26 +55,25 @@ while dont_exit_true == true
 			text = text.chomp
 			charmander =Array.new(text.length)
 			for counter in 0...text.length
-				num = Random.rand(67)
+				num = Random.rand($size-1)
 				
 				charmander[counter] = charizard[num] 
 			end
-			print "Your key is:"
+			print "Your key is \""
 			for counter in 0...charmander.length
 				print charmander[counter]
 			end
-			print "\nYour encrypted message is:"
+			print "\".\nYour cipher is \""
 			for counter in 0...charmander.length
 
 				print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
 			end
-			puts ""
+			print "\".\n"
 		when 2
-			
 			print "What is your key:"
 			key= gets.chomp
 			key = key.chars
-			print "What is your encrypted message:"	
+			print "What is your cipher:"	
 			$En = gets
 			print "Your decrypted message is:"
 			for counter in 0...key.length
