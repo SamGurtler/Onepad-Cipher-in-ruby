@@ -51,8 +51,7 @@ while dont_exit_true == true
 	case gets.chomp.to_i
 		when 1
 			print "Enter string you want encrypted:"
-			text = gets
-			text = text.chomp
+			text = gets.chomp
 			charmander =Array.new(text.length)
 			for counter in 0...text.length
 				num = Random.rand($size-1)
