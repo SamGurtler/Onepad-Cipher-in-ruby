@@ -55,7 +55,6 @@ while dont_exit_true == true
 			charmander =Array.new(text.length)
 			for counter in 0...text.length
 				num = Random.rand($size-1)
-				
 				charmander[counter] = charizard[num] 
 			end
 			print "Your key is \""
@@ -64,7 +63,6 @@ while dont_exit_true == true
 			end
 			print "\".\nYour cipher is \""
 			for counter in 0...charmander.length
-
 				print getEn(text.chars[counter],getEnArr(getLim(getPOA(charizard,charmander[counter])),getPOA(charizard,charmander[counter])),charizard)
 			end
 			print "\".\n"
@@ -76,7 +74,6 @@ while dont_exit_true == true
 			$En = gets
 			print "Your decrypted message is:"
 			for counter in 0...key.length
-
 				print getDe($En.chars[counter],getEnArr(getLim(getPOA(charizard,key[counter])),getPOA(charizard,key[counter])),charizard)
 			end
 			puts ""
